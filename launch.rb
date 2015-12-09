@@ -5,6 +5,11 @@ require_relative 'authentication'
 require_relative 'tweets'
 
 a = Authentication.new
-sample = "This text is only for placeholder"
 
-a.credentials.update(sample)
+today = Time.now.strftime("%d%m%Y").to_i
+
+@tweets.each do |key, value|
+  if key == today
+    a.credentials.update(value)
+  end
+end
